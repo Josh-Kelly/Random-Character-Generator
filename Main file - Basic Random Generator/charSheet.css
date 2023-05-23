@@ -1,0 +1,122 @@
+.table input[type=number] {
+  width: 100%;
+}
+
+.widerStringInput {
+  width: 300px;
+}
+
+.table select {
+  width: 100%;
+}
+
+.table-section {
+  text-align: center;
+  background-color: darkgray;
+}
+
+.empty {
+  background-color: darkgray;
+}
+
+.table {
+  outline: solid darkgray;
+}
+
+/* .background {
+  background-color: #5555AA;
+  padding-top: 15px;
+}
+.content {
+  position: relative;
+  background-color: white;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 100px 0 200px;
+  display:inline-block;
+}
+.content::after {
+  position: absolute;
+  right: -50px;
+  content: "";
+  border-bottom: 25px solid transparent;
+  border-left: 25px solid transparent;
+  border-top: 25px solid transparent;
+  border-right: 25px solid transparent;
+} */
+
+.passionValues {
+  position: relative;
+}
+
+.passionValues .passionMax {
+  position: absolute;
+  right: 5px;
+  bottom: 7px;
+  width: 30%;
+  font-size: 20px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+}
+
+.passionValues .passionCurrent {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  left: 10px;
+  font-size: 40px;
+  text-align: center;
+}
+
+.p-dash {
+  position: absolute;
+  font-size: 30px;
+  left: 80px;
+  top: 30px;
+}
+
+
+input.noSpinWheel::-webkit-outer-spin-button,
+input.noSpinWheel::-webkit-inner-spin-button,
+input.aspectMod::-webkit-outer-spin-button,
+input.aspectMod::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+input.noSpinWheel[type=number],
+input.aspectMod {
+  appearance: textfield;
+}
+
+.card-header {
+  display: flex;
+  justify-content: center;
+}
+
+.aspectMod {
+  width: 30px !important;
+}
+
+.aspectScore {
+  width: 50px !important;
+  font-weight: bold;
+}
+
+.highlightYellow {
+  background-color: yellow;
+}
+
+.highlightGreen {
+  background-color: greenyellow;
+}
+
+.highlightRed {
+  background-color: rgb(221, 128, 221);
+}
+
+.highlightBlue {
+  background-color: rgb(0, 247, 255);
+}

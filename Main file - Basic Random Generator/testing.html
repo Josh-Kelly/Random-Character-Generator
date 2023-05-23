@@ -1,0 +1,335 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <title>Alignments</title>
+  </head>
+  <body>
+    <div class="page-container">
+      <h1 class="page-title">Alignments</h1>
+      <div class="tab">
+        <button
+          class="tablinks"
+          id="defaultOpen"
+          onclick="selectTab(event, 'mainPage'), updateText()"
+        >
+          Main
+        </button>
+
+        <button
+          class="tablinks"
+          onclick="selectTab(event, 'gainingAndLosingAlignments')"
+        >
+          Gaining and Losing Alignments
+        </button>
+
+        <button
+          class="tablinks active"
+          onclick="selectTab(event, 'conflictingAlignment')"
+        >
+          Conflicting Alignment
+        </button>
+      </div>
+      <div id="mainPage" class="tabcontent" style="display: none">
+        <div class="lk-tab" id="mainPage">
+          <table
+            style=""
+            class="csg-commonTable"
+            cellspacing="0"
+            cellpadding="0"
+            border="0"
+          >
+            <tbody>
+              <tr>
+                <td style="" class="ak-editor-panel">
+                  <table
+                    style=""
+                    class="csg-commonTable"
+                    cellspacing="0"
+                    cellpadding="0"
+                    border="0"
+                  >
+                    <tbody>
+                      <tr>
+                        <td style="" class="csg-panel-inner">
+                          <h3 class="csg-h3">Alignment</h3>
+                          <p class="csg-p">
+                            Few things have been more consistently controversial
+                            in TTRPGs than Alignment. Telos aims to simplify and
+                            clarify the mechanics and meaning of Alignment by,
+                            to begin with, stating that few characters actually
+                            <span class="csg-mark-strong">have </span>true
+                            Alignment (at least at the start), and second that
+                            there is an objective Good and an objective Evil in
+                            Telos. While perspectives vary wildly on what is and
+                            is not considered Good, mortal perceptions of these
+                            have no bearing whatsoever on the Reality of them.
+                          </p>
+                          <p class="csg-p">
+                            Alignment Traits are not simply a representation of
+                            a character’s general outlook, they are
+                            representative of deeply held beliefs that
+                            consciously motivate a character’s activity and
+                            habits: Authority, Autonomy, Chaos, Good,
+                            Neutrality, and Evil. An Aligned character
+                            understands the ideal, seeks to exemplify it in
+                            herself, and molds her soul after it.
+                          </p>
+                          <p class="csg-p">
+                            A character may be generally indifferent to the
+                            suffering of others, but unless they specifically
+                            and aggressively avoid entanglements with the
+                            considerations of Good and Evil (e.g. Sapkowski’s
+                            witchers: Kill monster, get paid, avoid everything
+                            else), they should not possess the Neutral
+                            (good/evil) Trait.
+                          </p>
+                          <p class="csg-p">
+                            The best way to handle these alignments is for both
+                            the DM and the players to maintain at all times the
+                            understanding that
+                            <span class="csg-mark-strong"
+                              >the character does not know what their alignment
+                              is. </span
+                            >The
+                            <span class="csg-mark-strong">player</span> playing
+                            T’han’Os needs to always realize that while his
+                            <span class="csg-mark-underline"
+                              >character sheet</span
+                            >
+                            says “Evil Affinity,” T’han’Os will continue to
+                            reach for Good, successfully invoke his Alignment,
+                            and apply its effects to augment his efforts. What
+                            the
+                            <span class="csg-mark-strong">character</span> will
+                            not realize is that he is actually invoking Evil.
+                          </p>
+                          <p class="csg-p">
+                            Maintaining this distinction between what the player
+                            knows and what the character knows can be conducive
+                            to a moving campaign in which a character gradually
+                            comes to understand that the actions he has always
+                            considered good are actually Evil. This distinction
+                            can do so while also avoiding (excessive) ethical
+                            debate at the table. However, responsibly debating
+                            ethics is a wonderful and beneficial activity and
+                            frankly, if this game facilitates such an activity
+                            at your table, I consider it a win.
+                          </p>
+                          <p class="csg-p">
+                            To paraphrase Plato’s
+                            <span class="csg-mark-em">Gorgias</span>, there is
+                            no greater activity for a man than to discuss virtue
+                            every day, and to paraphrase the
+                            <span class="csg-mark-em">Phaedo</span>, there is no
+                            greater calamity for a man than to lose the belief
+                            that argument can arrive at truth.
+                          </p>
+                          <h3 class="csg-h3">Using Alignments</h3>
+                          <p class="csg-p">
+                            Alignments function identically to Passions, but
+                            also have minor, passive, situational effects: A
+                            character with a high Alignment to Authority will
+                            likely find the local guard are well-disposed toward
+                            her, while a character with a high Good Alignment
+                            may struggle to successfully intimidate with
+                            violence.
+                          </p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="csg-p"></p>
+        </div>
+      </div>
+
+      <div
+        id="gainingAndLosingAlignments"
+        class="tabcontent"
+        style="display: none"
+      >
+        <div class="lk-tab" id="gainingAndLosingAlignments">
+          <table
+            style=""
+            class="csg-commonTable"
+            cellspacing="0"
+            cellpadding="0"
+            border="0"
+          >
+            <tbody>
+              <tr>
+                <td style="" class="ak-editor-panel">
+                  <table
+                    style=""
+                    class="csg-commonTable"
+                    cellspacing="0"
+                    cellpadding="0"
+                    border="0"
+                  >
+                    <tbody>
+                      <tr>
+                        <td style="" class="csg-panel-inner">
+                          <h2 class="csg-h2">Gaining and Losing Alignments</h2>
+                          <p class="csg-p">
+                            Alignments are difficult to gain or lose because
+                            they are deeply held beliefs that require a great
+                            deal of thought, meditation, and deed to complete
+                            the alignment of a soul to them.
+                          </p>
+                          <p class="csg-p">
+                            To represent this fact, although the DM has full
+                            authority in deciding when and how Alignments are
+                            gained, an Alignment should only be initially gained
+                            or finally lost through a moment of significant
+                            roleplay: A towering moment in which a character
+                            chooses to spare their father’s murderer who lies
+                            helpless at their feet, allows the city to fall to
+                            pieces, having despaired at the people’s inability
+                            to come together, murders a child in pursuit of a
+                            greater good, or abandons others to a terrible fate
+                            by refusing to get involved.
+                          </p>
+                          <p class="csg-p">
+                            Otherwise, the Alignment mechanic risks becoming a
+                            gimmick which a player can pick up or lay down as it
+                            is useful or inconvenient in their “build.” Unlike
+                            Passions, redemption and corruption are always
+                            possible, and Alignments can be gained or lost more
+                            than once.
+                          </p>
+                          <p class="csg-p">
+                            Increasing or decreasing an Alignment Maximum, on
+                            the other hand, can be done through significant
+                            investment during Downtime. As with Passions, the
+                            player can describe the activity, the resources they
+                            intend to expend, the sacrifices they intend to
+                            make, and spend the Downtime Tokens. If the DM
+                            agrees, the Alignment can increase or decrease by
+                            whatever seems reasonable to the DM (usually just by
+                            1 point per Downtime).
+                          </p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="csg-p"></p>
+        </div>
+      </div>
+
+      <div id="conflictingAlignment" class="tabcontent" style="display: block">
+        <div class="lk-tab" id="conflictingAlignment">
+          <table
+            style=""
+            class="csg-commonTable"
+            cellspacing="0"
+            cellpadding="0"
+            border="0"
+          >
+            <tbody>
+              <tr>
+                <td style="" class="ak-editor-panel">
+                  <table
+                    style=""
+                    class="csg-commonTable"
+                    cellspacing="0"
+                    cellpadding="0"
+                    border="0"
+                  >
+                    <tbody>
+                      <tr>
+                        <td style="" class="csg-panel-inner">
+                          <h2 class="csg-h2">Conflicting Alignment</h2>
+                          <p class="csg-p">
+                            Contrary to many systems a single creature
+                            <span class="csg-mark-em">can </span>have
+                            conflicting Alignment at the cost of the division of
+                            its soul. The result is Madness.
+                          </p>
+                          <p class="csg-p">
+                            Overlap between Good/Evil and Neutral (Good/Evil)
+                            Alignment result in a constant 1 point of Madness
+                            per point of overlap. Overlap between Good and Evil
+                            Alignments result in a permanent 2 points of Madness
+                            per point of overlap.
+                          </p>
+                          <p class="csg-p">
+                            For example: A creature with Good 5, Evil 3, and
+                            Neutral (Good/Evil) 2 has a permanent Madness of:
+                            Good/Evil: 6 + Good/Neutral 2 + Evil/Neutral 2 = 10.
+                            Such situations are exceedingly rare, but not
+                            impossible.
+                          </p>
+                          <p class="csg-p">
+                            There is usually no conflict between the Alignments
+                            for Authority and Autonomy and those for Good and
+                            Evil. What separates them in terms of Good and Evil
+                            is what they think that order should look like, who
+                            should be in charge of it, what means are acceptable
+                            in seeing it come into being, and what means are
+                            acceptable in preventing it passing away.
+                          </p>
+                          <p class="csg-p">
+                            As in all things, the DM can alter these guidelines
+                            to suit their own table, but should be aware that
+                            doing so may complicate or conflict with other
+                            rules, creatures, and adventures that have been
+                            created with this system in mind.
+                          </p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table
+            style=""
+            class="csg-commonTable"
+            cellspacing="0"
+            cellpadding="0"
+            border="0"
+          >
+            <tbody>
+              <tr>
+                <td style="" class="ak-editor-panel">
+                  <table
+                    style=""
+                    class="csg-commonTable"
+                    cellspacing="0"
+                    cellpadding="0"
+                    border="0"
+                  >
+                    <tbody>
+                      <tr>
+                        <td style="" class="csg-panel-inner">
+                          <p class="csg-p">
+                            I kind of like this idea, but it also seems like a
+                            lot to keep track of. Maybe just have it only be
+                            possible to have a single Alignment at a time…
+                          </p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="csg-p"></p>
+          <p class="csg-p"></p>
+          <p class="csg-p"></p>
+        </div>
+      </div>
+
+      <script type="text/javascript" src="script.js"></script>
+    </div>
+  </body>
+</html>

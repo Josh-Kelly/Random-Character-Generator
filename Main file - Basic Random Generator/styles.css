@@ -1,0 +1,180 @@
+body {
+  padding: 48px;
+  font-family: Inter, sans-serif;
+}
+
+.page-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 0px;
+}
+
+.page-subtitle {
+  font-weight: 600;
+  font-size: 28px;
+  margin-top: 0px;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1.08;
+  text-align: justify;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.3;
+  text-align: justify;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1.63;
+  text-align: justify;
+}
+
+h4 {
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1.63;
+  text-align: justify;
+}
+
+h5 {
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.63;
+  text-align: justify;
+}
+
+.ProseMirror h6 {
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1.63;
+  text-align: justify;
+}
+
+p {
+  font-size: 14px;
+  line-height: 26px;
+  text-align: justify;
+}
+
+cite {
+  display: block;
+  background: #e9bdff1f;
+  padding: 15px 20px 15px 24px;
+  margin: 0 0 20px;
+  position: relative;
+
+  /*Font*/
+  font-family: Georgia, serif;
+  font-size: 16px;
+  line-height: 1.2;
+  color: #000;
+  text-align: justify;
+
+  /*Borders - (Optional)*/
+  border-left: 12px solid rgb(156, 40, 188);
+
+  /*Box Shadow - (Optional)*/
+  -moz-box-shadow: 2px 2px 7px #ccc;
+  -webkit-box-shadow: 2px 2px 7px #ccc;
+  box-shadow: 2px 2px 7px #ccc;
+}
+
+blockquote {
+  padding: 16px 20px;
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.86;
+  text-align: justify;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  background-color: rgba(13, 12, 10, 0.04);
+  border-left: 4px solid rgba(13, 12, 10, 0.08);
+}
+
+.ak-editor-panel {
+  border-radius: 3px;
+  margin: 1.143rem 0 0;
+  padding: 8px;
+  min-width: 48px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  word-break: break-word;
+  border: none;
+  color: inherit;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #f1f1f0;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #f1f1f0;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border-top: none;
+}
+
+div[data-layout-section="true"] {
+  display: flex;
+  justify-content: space-between;
+}
+
+div[data-layout-column="true"] {
+  margin-right: 20px;
+}
+
+div[data-layout="wrap-left"] .lk-image {
+  float: left;
+  width: 50%;
+  margin-right: 20px;
+}
+
+div[data-layout="wrap-right"] .lk-image {
+  float: right;
+  width: 50%;
+  margin-left: 20px;
+}
