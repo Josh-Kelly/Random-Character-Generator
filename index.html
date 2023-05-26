@@ -1,1 +1,1199 @@
-Hello World
+<!DOCTYPE html>
+  <html>
+    <head>
+      <script type="text/javascript" src="charSheetMain.js"></script>
+      <link
+        href="https://getbootstrap.com/docs/4.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+      />
+      <link href="charSheet.css" rel="stylesheet" />
+      
+    </head>
+
+    <body onload="hideStuffOnLoad()">
+      <div class="container">
+
+        <div class="row">
+          <div class="highlight">
+            <h5>Welcome to the Telos Random Character Generator! You only need to do a few things:<br>
+              .5. Howdy!
+              1. Click on the <span class="highlightYellow">yellow</span> "Generate Character" button!<br>
+              2. Scroll to the bottom and use the dropdown menus to choose your <span class="highlightGreen">skills according to your Profession. Do this BEFORE distributing your Aspect points</span>. <br>
+              3. Distribute the <span class="highlightRed">Aspect Scores</span>.<br>
+              4. Record the <span class="highlightBlue">resulting info</span>, which has dynamically updated based on your choices!
+            </h5>
+          </div>
+          <div class="col-6">
+            <h2>Adventurer Info</h2>
+            <table class="table">
+              <tr>
+                <th>Type</th>
+                <th>Value</th>
+              </tr>
+              <tr>
+                <td>Player Name</td>
+                <td><input class="widerStringInput"></td>
+              </tr>
+              <tr>
+                <td>
+                  Character Gender
+                </td>
+                <td>
+                  <select id="genderSelect">
+                    <option value="genderMale">Male</option>
+                    <option value="genderFemale">Female</option>
+                    <option value="genderRandom">Random</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Generate Character
+                </td>
+                <td>
+                  <button  class="highlightYellow" onclick="generateRandomCharacter()">Generate Character</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Character Name</td>
+                <td><input id="Name!" class="widerStringInput highlightBlue"></td>
+              </tr>
+              <tr>
+                <td>Culture</td>
+                <td>
+                  <select id="charCulture" name="CharCulture"  class="highlightBlue">
+                    <option value="alliance">Northern Alliance</option>
+                    <option value="hegemony">Dragonborn Hegemony</option>
+                    <option value="republic">Central Republics</option>
+                    <option value="gateweald">Gateweald</option>
+                    <option value="colonies">Elven Colonies</option>
+                    <option value="echoes">Orc Echoes</option>
+                    <option value="combine">Al-Komeni Combine</option>
+                    <option value="empire">Vreiman Empire</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Race</td>
+                <td>
+                  <select id="charRace" name="CharRace" class="highlightBlue">
+                    <option value="human">Human</option>
+                    <option value="dwarf">Dwarf</option>
+                    <option value="halfling">Halfling</option>
+                    <option value="elf">Elf</option>
+                    <option value="orc">Orc</option>
+                    <option value="gnome">Gnome</option>
+                    <option value="dragonbornShinyBlack">Dragonborn (Shiny Black)</option>
+                    <option value="dragonbornShinyBlue">Dragonborn (Shiny Blue)</option>
+                    <option value="dragonbornShinyBrassBronzeCopper">Dragonborn (Shiny Brass/Bronze/Copper)</option>
+                    <option value="dragonbornShinyGold">Dragonborn (Shiny Gold)</option>
+                    <option value="dragonbornShinyGreen">Dragonborn (Shiny Green)</option>
+                    <option value="dragonbornShinyRed">Dragonborn (Shiny Red)</option>
+                    <option value="dragonbornShinySilver">Dragonborn (Shiny Silver)</option>
+                    <option value="dragonbornShinyWhite">Dragonborn (Shiny White)</option>
+                    <option value="dragonbornDullBlack">Dragonborn (Dull Black)</option>
+                    <option value="dragonbornDullBlue">Dragonborn (Dull Blue)</option>
+                    <option value="dragonbornDullBrassBronzeCopper">Dragonborn (Dull Brass/Bronze/Copper)</option>
+                    <option value="dragonbornDullGold">Dragonborn (Dull Gold)</option>
+                    <option value="dragonbornDullGreen">Dragonborn (Dull Green)</option>
+                    <option value="dragonbornDullRed">Dragonborn (Dull Red)</option>
+                    <option value="dragonbornDullSilver">Dragonborn (Dull Silver)</option>
+                    <option value="dragonbornDullWhite">Dragonborn (Dull White)</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Profession</td>
+                <td>
+                  <select id="charProfession" name="CharProfession"  class="highlightBlue">
+                    <option value="none">None</option>
+                    <option value="hunting">Hunting (whaler, fisherman, hunter)</option>
+                    <option value="labor">Labor (watercarrier, dockworker, gongfarmer)</option>
+                    <option value="craftsman">Craftsman (armorer, carpenter, bowyer, bladesmith)</option>
+                    <option value="merchant">Merchant (butcher, fish-seller, tanner)</option>
+                    <option value="special">Special (gald-estemer, leofspeller)</option>
+                    <option value="criminal">Criminal (thief, thug)</option>
+                    <option value="entertainment">Entertainment (prostitute, juggler, acrobat, musician)</option>
+                    <option value="government">Government (bailiff, mancatcher, judge, bureaucrat)</option>
+                    <option value="military">Military (guard, watch, riverpike)</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Adventurer Rank</td>
+                <td>
+                  <select class="highlightBlue" id="advRank" name="AdventurerRank" onchange="updateHPAndStamina()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                    <option value="rank7">Rank 7</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Size</td>
+                <td>
+                  <select id="charSize" name="CharSize" class="highlightBlue">
+                    <optgroup label="PC Sizes">
+                      <option value="tiny">Tiny</option>
+                      <option value="small">Small</option>
+                      <option value="medium">Medium</option>
+                      <option value="large">Large</option>
+                    </optgroup>
+                    <optgroup label="Monster Sizes">
+                      <option value="huge">Huge</option>
+                      <option value="giant">Giant</option>
+                      <option value="gargantuan">Gargantuan</option>
+                    </optgroup>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Armor Type</td>
+                <td>
+                  <select id="armorType" name="ArmorType" class="highlightBlue">
+                    <option value="unarmored">Unarmored</option>
+                    <optgroup label="Light Armor">
+                      <option value="leather">Leather</option>
+                      <option value="studdedleather">Studded Leather</option>
+                    </optgroup>
+                    <optgroup label="Medium Armor">
+                      <option value="chainmail">Chainmail</option>
+                      <option value="brigandine">Brigandine</option>
+                      <option value="splintmail">Splint Mail</option>
+                    </optgroup>
+                    <optgroup label="Heavy Armor">
+                      <option value="halfplate">Half-Plate</option>
+                      <option value="fullplate">Full-Plate</option>
+                    </optgroup>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Armor Quality</td>
+                <td>
+                  <select id="armorQuality" name="ArmorQuality" class="highlightBlue">
+                    <option value="n/a">N/A</option>
+                    <option value="shoddy">Shoddy</option>
+                    <option value="standard">Standard</option>
+                    <option value="superior">Superior</option>
+                    <option value="masterwork">Masterwork</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Shield Class</td>
+                <td>
+                  <select id="shieldClass" name="ShieldClass" class="highlightBlue">
+                    <option value="noshield">No Shield</option>
+                    <option value="special">Special</option>
+                    <option value="light">Light</option>
+                    <option value="medium">Medium</option>
+                    <option value="heavy">Heavy</option>
+                  </select>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="col-4">
+            <h2>Attributes and Aspects</h2>
+            <table class="table">
+              <tr>
+                <td id="raceAspectBonuses" colspan="5" class="highlightRed"></td>
+                
+              </tr>
+              <tr><td id="professionAspectBonuses" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="fasttalkSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="insightSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="intrigueSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="leadershipSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="performSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="storytellingSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="craftarmorSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="craftbladeSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="craftjewelryorgemSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="leatherworkingSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="sleightofhandSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="workmechanismSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="historySkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="plantloreSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="cookingloreSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="creatureloreSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="cultloreSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="spothiddenSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="listenSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="scanSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="huntandtrackSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="driveSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="sailSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="swimSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="climbSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="jumpSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="movesilentlySkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="swordSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="daggerSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="spearSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="bluntSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="axeSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="crossbowSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="bowSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr><td id ="slingSkillDisplay" colspan="5" class="highlightRed"></td></tr>
+              <tr>
+                <th>Aspect</th>
+                <th>Score</th>
+                <th>Mod</th>
+                <th>Attribute</th>
+                <th>Score</th>
+              </tr>
+              <tr>
+                <td>Strength</td>
+                <td>
+                  <input
+                    type="number"
+                    value="8"
+                    id="strScore"
+                    name="CharStr"
+                    min="8"
+                    max="30"
+                    class="aspectScore highlightRed"
+                    onchange="applyOnAspectChange()"
+                  />
+                </td>
+                <td><input type="number" class="aspectMod highlightBlue" id="strMod" onchange="updateAspectModsAndHPStamina()"/></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Constitution</td>
+                <td>
+                  <input
+                    type="number"
+                    value="8"
+                    id="conScore"
+                    name="CharCon"
+                    min="8"
+                    max="30"
+                    class="aspectScore highlightRed"
+                    onchange="applyOnAspectChange()"
+                  />
+                </td>
+                <td><input type="number" class="aspectMod highlightBlue" id="conMod" onchange="updateHPAndStamina()"/></td>
+                <td>MIGHT</td>
+                <td><input class="noSpinWheel highlightBlue" type="number" id="mightScore" name="CharMight"/></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Resolve</td>
+                <td>
+                  <input
+                    type="number"
+                    value="8"
+                    id="rlvScore"
+                    name="CharRlv"
+                    min="8"
+                    max="30"
+                    class="aspectScore highlightRed"
+                    onchange="applyOnAspectChange()"
+                  />
+                </td>
+                <td><input type="number" class="aspectMod highlightBlue" id="rlvMod" onchange="applyOnAspectChange()"/></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr class="BLANK">
+                <td class="empty"></td>
+                <td class="empty"></td>
+                <td class="empty"></td>
+                <td class="empty"></td>
+                <td class="empty"></td>
+              </tr>
+              <tr>
+                <td>Perception</td>
+                <td>
+                  <input
+                    type="number"
+                    value="8"
+                    id="perScore"
+                    name="CharPer"
+                    min="8"
+                    max="30"
+                    class="aspectScore highlightRed"
+                    onchange="applyOnAspectChange()"
+                  />
+                </td>
+                <td><input type="number" class="aspectMod highlightBlue" id="perMod" /></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Intuition</td>
+                <td>
+                  <input
+                    type="number"
+                    value="8"
+                    id="intScore"
+                    name="CharInt"
+                    min="8"
+                    max="30"
+                    class="aspectScore highlightRed"
+                    onchange="applyOnAspectChange()"
+                  />
+                </td>
+                <td><input type="number" class="aspectMod highlightBlue" id="intMod" /></td>
+                <td>AWARENESS</td>
+                <td>
+                  <input class="noSpinWheel highlightBlue" type="number" id="awarenessScore" name="CharAwareness" />
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Wisdom</td>
+                <td>
+                  <input
+                    type="number"
+                    value="8"
+                    id="wisScore"
+                    name="CharWis"
+                    min="8"
+                    max="30"
+                    class="aspectScore highlightRed"
+                    onchange="applyOnAspectChange()"
+                  />
+                </td>
+                <td><input type="number" class="aspectMod highlightBlue" id="wisMod" /></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr class="BLANK">
+                <td class="empty"></td>
+                <td class="empty"></td>
+                <td class="empty"></td>
+                <td class="empty"></td>
+                <td class="empty"></td>
+              </tr>
+              <tr>
+                <td>Wit</td>
+                <td>
+                  <input
+                    type="number"
+                    value="8"
+                    id="witScore"
+                    name="CharWit"
+                    min="8"
+                    max="30"
+                    class="aspectScore highlightRed"
+                    onchange="applyOnAspectChange()"
+                  />
+                </td>
+                <td><input type="number" class="aspectMod highlightBlue" id="witMod"/></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Logic</td>
+                <td>
+                  <input
+                    type="number"
+                    value="8"
+                    id="logScore"
+                    name="CharLog"
+                    min="8"
+                    max="30"
+                    class="aspectScore highlightRed"
+                    onchange="applyOnAspectChange()"
+                  />
+                </td>
+                <td><input type="number" class="aspectMod highlightBlue" id="logMod" /></td>
+                <td>INTELLECT</td>
+                <td>
+                  <input class="noSpinWheel highlightBlue" type="number" id="intellectScore" name="CharIntellect"/>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Memory</td>
+                <td>
+                  <input
+                    class="aspectScore highlightRed"
+                    type="number"
+                    value="8"
+                    id="memScore"
+                    name="CharMem"
+                    min="8"
+                    max="30"
+                    onchange="applyOnAspectChange()"
+                  />
+                </td>
+                <td><input type="number" class="aspectMod highlightBlue" id="memMod" /></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr class="BLANK">
+                <td class="empty"></td>
+                <td class="empty"></td>
+                <td class="empty"></td>
+                <td class="empty"></td>
+                <td class="empty"></td>
+              </tr>
+              <tr>
+                <td>Creativity</td>
+                <td>
+                  <input
+                    class="aspectScore highlightRed"
+                    type="number"
+                    value="8"
+                    id="creScore"
+                    name="CharCre"
+                    min="8"
+                    max="30"
+                    onchange="applyOnAspectChange()"
+                  />
+                </td>
+                <td><input type="number" class="aspectMod highlightBlue" id="creMod" /></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Dexterity</td>
+                <td>
+                  <input
+                    class="aspectScore highlightRed"
+                    type="number"
+                    value="8"
+                    id="dexScore"
+                    name="CharDex"
+                    min="8"
+                    max="30"
+                    onchange="applyOnAspectChange()"
+                  />
+                </td>
+                <td><input type="number" class="aspectMod highlightBlue" id="dexMod" /></td>
+                <td>APTITUDE</td>
+                <td>
+                  <input class="noSpinWheel highlightBlue" type="number" id="aptitudeScore" name="CharAptitude"/>
+                </td>
+              </tr>
+              <tr>
+                <td>Deftness</td>
+                <td>
+                  <input
+                  class="aspectScore highlightRed"
+                    type="number"
+                    value="8"
+                    id="deftScore"
+                    name="CharDeft"
+                    min="8"
+                    max="30"
+                    onchange="applyOnAspectChange()"
+                  />
+                </td>
+                <td><input type="number" class="aspectMod highlightBlue" id="deftMod" /></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="col-12">
+            <table class="table">
+              <tr>
+                <td>
+                  <div>
+                    <h3>Character Creation</h3>
+                      <p>No Aspect can begin higher than a 13 before racial modifiers.</p>
+                    <h5>Disadvantages:</h5>
+                      <strong><p id="disadvantagesText" class="highlightBlue"></p></strong>
+                    <h5>Favored Traits</h5>
+                    <h6>(Only relevant at Downtime. Simply record these in the top right of your sheet for later):</h6><strong><p id="traitsText" class=" highlightBlue"></p></strong>
+                    <h5>Favored Skills:</h5>
+                    <h6>(Only relevant at Downtime. Simply record these in the top right of your sheet for later):</h6>
+                      <strong><p id="favoredSkillsText" class=" highlightBlue"></p></strong>
+                      <tr>
+                        <th>Equipment</th>
+                      </tr>
+                      <tr>
+                        <td id="equipMisc" class=" highlightBlue"></td>
+                      </tr>
+                      <tr>
+                        <td id="equipArmor" class=" highlightBlue"></td>
+                      </tr>
+                      <tr>
+                        <td id="equipWeapons" class=" highlightBlue"></td>
+                      </tr>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td id="charCreationNotes" class=" highlightBlue"></td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="col-3">
+            <h2>General Modifiers</h2>
+            <table id="generalModifiers" class="table">
+              <tr>
+                <th>Type</th>
+                <th>Value</th>
+              </tr>
+              <tr>
+                <td>Size Modifier</td>
+                <td>
+                  <p class=" highlightBlue"id="sizeMod" name="SizeMod" onchange="updateHPAndStamina()">0</p>
+                </td>
+              </tr>
+              <tr>
+                <td>Adventurer Rank</td>
+                <td>
+                  <p id="advRankValue" name="AdventurerRankMod">0</p>
+                </td>
+              </tr>
+              <tr>
+                <td>Base Might</td>
+                <td>
+                  <input
+                    type="number"
+                    id="baseMight"
+                    name="BaseMight"
+                    value="0"
+                    class="noSpinWheel"
+                    onchange="updateAttributesAndAspects()"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>Base Awareness</td>
+                <td>
+                  <input
+                    type="number"
+                    id="baseAwareness"
+                    name="BaseAwareness"
+                    value="0"
+                    class="noSpinWheel"
+                    onchange="updateAttributesAndAspects()"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>Base Intellect</td>
+                <td>
+                  <input
+                    type="number"
+                    id="baseIntellect"
+                    name="BaseIntellect"
+                    value="0"
+                    class="noSpinWheel"
+                    onchange="updateAttributesAndAspects()"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>Base Aptitude</td>
+                <td>
+                  <input
+                    type="number"
+                    id="baseAptitude"
+                    name="BaseAptitude"
+                    value="0"
+                    class="noSpinWheel"
+                    onchange="updateAttributesAndAspects()"
+                  />
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="col-6">
+            <h2>Derived Values</h2>
+            <table class="table">
+              <tr>
+                <td>HP Max:</td>
+                <td><input id="hitPointsMax" name="HitPointsMax" type="number" class="noSpinWheel highlightBlue"></td>
+              </tr>
+              <tr>
+                <td>Stamina Max:</td>
+                <td><input id="staminaMax" name="staminaCurrent" type="number" class="noSpinWheel highlightBlue"></td>
+              </tr>
+              <tr>
+                <td>Weapon Type Equipped</td>
+                <td>
+                  <select id="weaponTypeEquipped" name="WeaponTypeEquipped" onchange="updateArmorAndDefense()">
+                    <option value="unarmed">Unarmed</option>
+                    <option value="melee">Melee</option>
+                    <option value="ranged">Ranged</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class=" highlightBlue">
+                <td>Melee Defense</td>
+                <td></td>
+                <td><p id="meleeDefense" name="MeleeDefense">0</p></td>
+              </tr>
+              <tr class=" highlightBlue">
+                <td>Melee Armor</td>
+                <td></td>
+                <td><p id="meleeArmor" name="MeleeArmor">0</p></td>
+              </tr>
+              <tr class=" highlightBlue">
+                <td>Ranged Defense</td>
+                <td></td>
+                <td><p id="rangedDefense" name="RangedDefense">0</p></td>
+              </tr>
+              <tr class=" highlightBlue">
+                <td>Ranged Armor</td>
+                <td></td>
+                <td><p id="rangedArmor" name="RangedArmor">0</p></td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="highlightGreen col-12">
+            <table>
+              <tr>
+                <td>Profession Skill Bonuses:</td>
+              </tr>
+              <tr>
+                <td>
+                  <p id="professionSkillBonuses"></p>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="col-6">
+            <h2>Common Skills</h2>
+            <table class="table">
+              <tr>
+                <th>Skill</th>
+                <th>Rank</th>
+              </tr>
+              <tr>
+                <td colspan="3" class="table-section">Social Skills</td>
+              </tr>
+              <tr>
+                <td>Fast Talk</td>
+                <td>
+                  <select id="fasttalkSkill" name="FastTalk" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Insight</td>
+                <td>
+                  <select id="insightSkill" name="Insight" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Intrigue</td>
+                <td>
+                  <select id="intrigueSkill" name="Intrigue" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Leadership</td>
+                <td>
+                  <select id="leadershipSkill" name="Leadership" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Perform</td>
+                <td>
+                  <select id="performSkill" name="Perform" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Storytelling</td>
+                <td>
+                  <select id="storytellingSkill" name="Storytelling" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" class="table-section">Manipulation Skills</td>
+              </tr>
+              <tr>
+                <td>Craft Armor</td>
+                <td>
+                  <select id="craftarmorSkill" name="CraftArmor" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Craft Blade</td>
+                <td>
+                  <select id="craftbladeSkill" name="CraftBlade" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Craft Jewelry or Gem</td>
+                <td>
+                  <select id="craftjewelryorgemSkill" name="CraftJewelryOrGem" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Leatherworking</td>
+                <td>
+                  <select id="leatherworkingSkill" name="Leatherworking" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Sleight of Hand</td>
+                <td>
+                  <select id="sleightofhandSkill" name="SleightOfHand" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Work Mechanism</td>
+                <td>
+                  <select id="workmechanismSkill" name="WorkMechanism" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" class="table-section">Lore Skills</td>
+              </tr>
+              <tr>
+                <td>History</td>
+                <td>
+                  <select id="historySkill" name="History" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Plant Lore</td>
+                <td>
+                  <select id="plantloreSkill" name="PlantLore" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Cooking Lore</td>
+                <td>
+                  <select id="cookingloreSkill" name="CookingLore" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Creature Lore</td>
+                <td>
+                  <select id="creatureloreSkill" name="CreatureLore" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Cult Lore</td>
+                <td>
+                  <select id="cultloreSkill" name="CultLore" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" class="table-section">Awareness Skills</td>
+              </tr>
+              <tr>
+                <td>Spot Hidden</td>
+                <td>
+                  <select id="spothiddenSkill" name="SpotHidden" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Listen</td>
+                <td>
+                  <select id="listenSkill" name="Listen" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Scan</td>
+                <td>
+                  <select id="scanSkill" name="Scan" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Hunt and Track</td>
+                <td>
+                  <select id="huntandtrackSkill" name="HuntAndTrack" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" class="table-section">Movement Skills</td>
+              </tr>
+              <tr>
+                <td>Drive</td>
+                <td>
+                  <select id="driveSkill" name="Drive" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Sail</td>
+                <td>
+                  <select id="sailSkill" name="Sail" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Swim</td>
+                <td>
+                  <select id="swimSkill" name="Swim" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Climb</td>
+                <td>
+                  <select id="climbSkill" name="Climb" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Jump</td>
+                <td>
+                  <select id="jumpSkill" name="Jump" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Move Silently</td>
+                <td>
+                  <select id="movesilentlySkill" name="MoveSilently" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="col-6">
+            <h2>Martial Skills</h2>
+            <table class="table">
+              <tr>
+                <th>Skill</th>
+                <th>Rank</th>
+              </tr>
+              <tr>
+                <td colspan="3" class="table-section">Melee Skills</td>
+              </tr>
+              <tr>
+                <td>Sword</td>
+                <td>
+                    <select id="swordSkill" name="Sword" onchange="applyOnSkillChange()">
+                      <option value="rank0">Rank 0</option>
+                      <option value="rank1">Rank 1</option>
+                      <option value="rank2">Rank 2</option>
+                      <option value="rank3">Rank 3</option>
+                      <option value="rank4">Rank 4</option>
+                      <option value="rank5">Rank 5</option>
+                      <option value="rank6">Rank 6</option>
+                    </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Dagger</td>
+                <td>
+                  <select id="daggerSkill" name="Dagger" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Spear</td>
+                <td>
+                  <select id="spearSkill" name="Spear" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Blunt</td>
+                <td>
+                  <select id="bluntSkill" name="Blunt" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Axe</td>
+                <td>
+                  <select id="axeSkill" name="Axe" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" class="table-section">Ranged Skills</td>
+              </tr>
+              <tr>
+                <td>Crossbow</td>
+                <td>
+                  <select id="crossbowSkill" name="Crossbow" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Bow</td>
+                <td>
+                  <select id="bowSkill" name="Bow" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Sling</td>
+                <td>
+                  <select id="slingSkill" name="Sling" onchange="applyOnSkillChange()">
+                    <option value="rank0">Rank 0</option>
+                    <option value="rank1">Rank 1</option>
+                    <option value="rank2">Rank 2</option>
+                    <option value="rank3">Rank 3</option>
+                    <option value="rank4">Rank 4</option>
+                    <option value="rank5">Rank 5</option>
+                    <option value="rank6">Rank 6</option>
+                  </select>
+                </td>
+              </tr>
+            </table>
+          </div>
+    </body>
+  </html>
