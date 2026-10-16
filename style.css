@@ -1,0 +1,46 @@
+body {
+  font-family: Inter, system-ui, sans-serif;
+  padding: 48px 16px;
+}
+
+main {
+  max-width: 420px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+label {
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+select,
+input,
+button {
+  font: inherit;
+  padding: 8px;
+}
+
+button {
+  margin-top: 12px;
+  cursor: pointer;
+  background: yellow;
+  border: 1px solid #999;
+}
+
+#nameOutput {
+  background: rgb(0, 247, 255);
+  font-weight: 600;
+}
+
+.note {
+  color: #a33;
+  min-height: 1.2em;
+  margin: 0;
+}
