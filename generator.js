@@ -7,8 +7,9 @@ function pick(list) {
 }
 
 function buildName(culture, gender) {
-  const male = unique(culture.maleFirst);
-  const female = unique(culture.femaleFirst);
+  const neutral = culture.neutralFirst || [];
+  const male = unique([...culture.maleFirst, ...neutral]);
+  const female = unique([...culture.femaleFirst, ...neutral]);
   const last = unique(culture.last);
   const pat = culture.patronymics;
 
